@@ -8,10 +8,13 @@ int main()
 	//d1.PrintDate();
 
 	Student s1;
-	int a{};
 	s1.Setting();
 	s1.CreateStudent();
 
-	s1.Print();
+	
+	
+	
+	
 
+	
 }
