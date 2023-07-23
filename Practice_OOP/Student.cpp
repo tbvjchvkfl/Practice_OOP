@@ -33,21 +33,43 @@ void Student::Setting()
 
 void Student::CreateStudent()
 {
-
-	std::string* mName = new std::string[mNumber];
 	for (int i = 0; i < mNumber; i++)
 	{
 		std::cout << "-----------" << std::endl;
 		std::cout << "번호 : " << i + 1 << std::endl;
 		std::cout << "점수 : ";
 		std::cin >> mScore;
+		mRanking.push_back(mScore);
 		std::cout << "이름 : ";
 		std::cin >> mName[i];
 		std::cout << "-----------" << std::endl;
 	}
 }
-void Student::Sort() const
+void Student::Sort(int left)
 {
-	// 점수 순으로 정렬 시킬 것.
+	// Quick Sort
+	int L{left};
+	int R{mNumber};
+	int pivot{ mRanking[(left + mNumber) / 2] };
 	
+
+	while (left <= mNumber)
+	{
+		while (mRanking[left] < pivot)
+		{
+			left++;
+		}
+		while (mRanking[mNumber] > pivot)
+		{
+			mNumber--;
+		}
+	}
+	if (left < R)
+	{
+		Sort(left);
+	}
+	if (L < mNumber)
+	{
+		Sort(L);
+	}
 }
