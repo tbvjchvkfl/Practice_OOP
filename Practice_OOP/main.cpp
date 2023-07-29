@@ -12,18 +12,14 @@ int main()
 	s1.CreateStudent();
 
 	char a{};
-	std::cout << "점수 순으로 정렬하시겠습니까?" << std::endl;
-	std::cout << "y == 정렬 시작 / n == 종료";
+	std::cout << "점수 순으로 정렬합니다." << std::endl;
+	//std::cout << "y == 정렬 시작 / n == 종료";
 
-	std::cin >> a;
+	//std::cin >> a;
 	
-	if (a == 'y')
-	{
+	//if (a == 'y')
+	//{
 		s1.Sort(0);
-	}
-	else if (a == 'n')
-	{
-		return 0;
-	}
-	
+		s1.Print();
+	//}
 }

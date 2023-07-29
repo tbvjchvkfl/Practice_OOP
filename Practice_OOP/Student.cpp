@@ -3,9 +3,7 @@
 
 Student::Student()
 {
-
 	mNumber = 0;
-	mScore = 0;
 }
 
 Student::~Student()
@@ -38,8 +36,7 @@ void Student::CreateStudent()
 		std::cout << "-----------" << std::endl;
 		std::cout << "번호 : " << i + 1 << std::endl;
 		std::cout << "점수 : ";
-		std::cin >> mScore;
-		mRanking.push_back(mScore);
+		std::cin >> mScore[i];
 		std::cout << "이름 : ";
 		std::cin >> mName[i];
 		std::cout << "-----------" << std::endl;
@@ -47,29 +44,46 @@ void Student::CreateStudent()
 }
 void Student::Sort(int left)
 {
-	// Quick Sort
-	int L{left};
-	int R{mNumber};
-	int pivot{ mRanking[(left + mNumber) / 2] };
-	
+	//// Quick Sort
+	int i = left;
+	int j = mNumber - 1;
+	int pivot = mScore[(left + (mNumber - 1)) / 2];
 
-	while (left <= mNumber)
+
+	while (i <= j)
 	{
-		while (mRanking[left] < pivot)
+		while (mScore[i] < pivot)
 		{
-			left++;
+			i++;
 		}
-		while (mRanking[mNumber] > pivot)
+
+		while (mScore[j] > pivot)
 		{
-			mNumber--;
+			j--;
+		}
+
+		if (i <= j)
+		{
+			int temp = mScore[i];
+			mScore[i] = mScore[j];
+			mScore[j] = temp;
+			i++;
+			j--;
 		}
 	}
-	if (left < R)
+	if (left < j)
 	{
 		Sort(left);
 	}
-	if (L < mNumber)
+	if (i < mNumber - 1)
 	{
-		Sort(L);
+		Sort(i);
+	}
+}
+void Student::Print()
+{
+	for (int a = 0; a < mNumber; a++)
+	{
+		std::cout << mScore[a] << std::endl;
 	}
 }
